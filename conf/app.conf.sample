@@ -1,0 +1,5 @@
+appname="y3"
+db_host = ""
+httpport=0
+reconverpanic=true
+subjects=""

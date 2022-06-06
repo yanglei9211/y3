@@ -1,0 +1,155 @@
+---
+swagger: "2.0"
+info:
+  description: "test swagger ymal"
+  version: "1.0.0"
+  title: "Swagger Test"
+  termsOfService: "http://swagger.io/terms/"
+  contact:
+    email: "apiteam@swagger.io"
+  license:
+    name: "Apache 2.0"
+    url: "http://www.apache.org/licenses/LICENSE-2.0.html"
+host: "127.0.0.1:9010"
+basePath: "/"
+tags:
+  - name: "test"
+    description: "test interface"
+schemes:
+  - "http"
+paths:
+  /:
+    get:
+      tags:
+        - "test"
+      summary: "welcome"
+
+      responses:
+        "200":
+          description: "success"
+          schema:
+            type: "object"
+        '400':
+          description: Bad request. User ID must be an integer and larger than 0.
+        '401':
+          description: Authorization information is missing or invalid.
+        '404':
+          description: A user with the specified ID was not found.
+        '500':
+          description: Unexpected error.
+  /test/sum:
+    get:
+      tags:
+        - "test"
+      summary: "test sum"
+      description: "sum"
+      consumes:
+        - "application/json"
+      parameters:
+        - name: "x"
+          in: "query"
+          description: "int x"
+          required: true
+          type: "integer"
+        - name: "y"
+          in: "query"
+          description: "int y"
+          required: true
+          type: "integer"
+      responses:
+        "500":
+          description: "Invalid ID supplied"
+        "502":
+          description: "Pet not found"
+        "405":
+          description: "Validation exception"
+        "200":
+          description: "success"
+          schema:
+            $ref: "#/definitions/Base"
+
+  /test/item_info:
+    get:
+      tags:
+        - "test"
+      summary: "find item in db"
+      description: "item data from db"
+      consumes:
+        - "application/json"
+      parameters:
+        - name: "subject"
+          in: "query"
+          description: "select a subject"
+          required: true
+          type: "array"
+          items:
+            type: "string"
+            default: "math"
+            enum:
+              - "math"
+              - "chinese"
+              - "english"
+        - name: "item_id"
+          in: "query"
+          description: "item_id"
+          required: true
+          type: "string"
+
+      responses:
+        "500":
+          description: "Invalid ID supplied"
+        "502":
+          description: "Pet not found"
+        "405":
+          description: "Validation exception"
+        "200":
+          description: "success"
+          schema:
+            $ref: "#/definitions/Base"
+
+  /test/item_details:
+    get:
+      tags:
+        - "test"
+      summary: "find item with html"
+      description: "item details"
+      consumes:
+        - "application/json"
+      parameters:
+        - name: "subject"
+          in: "query"
+          description: "select a subject"
+          required: true
+          type: "array"
+          items:
+            type: "string"
+            default: "math"
+            enum:
+              - "math"
+              - "chinese"
+              - "english"
+        - name: "item_id"
+          in: "query"
+          description: "item_id"
+          required: true
+          type: "string"
+
+      responses:
+        "500":
+          description: "Invalid ID supplied"
+        "502":
+          description: "Pet not found"
+        "405":
+          description: "Validation exception"
+        "200":
+          description: "success"
+          schema:
+            $ref: "#/definitions/Base"
+
+definitions:
+  Base:
+    type: "object"
+    properties:
+      items:
+        type: "object"
+  
