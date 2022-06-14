@@ -10,13 +10,13 @@ info:
   license:
     name: "Apache 2.0"
     url: "http://www.apache.org/licenses/LICENSE-2.0.html"
-host: "127.0.0.1:9010"
-basePath: "/"
+host: "gemini.test.17zuoye.net"
+basePath: "/api/y3"
 tags:
   - name: "test"
     description: "test interface"
 schemes:
-  - "http"
+  - "https"
 paths:
   /:
     get:
@@ -37,7 +37,7 @@ paths:
           description: A user with the specified ID was not found.
         '500':
           description: Unexpected error.
-  /test/sum:
+  /sum:
     get:
       tags:
         - "test"
@@ -68,7 +68,7 @@ paths:
           schema:
             $ref: "#/definitions/Base"
 
-  /test/item_info:
+  /item_info:
     get:
       tags:
         - "test"
@@ -107,7 +107,7 @@ paths:
           schema:
             $ref: "#/definitions/Base"
 
-  /test/item_details:
+  /item_details:
     get:
       tags:
         - "test"
