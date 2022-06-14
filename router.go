@@ -7,7 +7,7 @@ import (
 )
 
 func InitRouters() {
-	nsTest := web.NewNamespace("/test",
+	nsTest := web.NewNamespace("/api/y3",
 		web.NSRouter("/sum", &controller.MainController{}),
 		web.NSRouter("item_info", &controller.ItemInfoController{}),
 		web.NSRouter("item_details", &controller.ItemDetailsController{}))
